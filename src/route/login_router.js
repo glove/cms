@@ -38,5 +38,9 @@ module.exports = express.Router().get('/login', async (req, res) => {
                 cookie: cookie
             }
         })
+        res.cookie('sessionId', cookie)
     }
+
+    res.status(200)
+        .send('Successfully logged in!')
 })

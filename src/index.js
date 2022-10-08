@@ -15,7 +15,8 @@ const helmet = require('helmet')
 const rateLimiting = require('./middleware/rate_limiting')
 
 //Routing
-const loginRouter = require('./route/login_route')
+const apiRouter = require('./route/api_router')
+const loginRouter = require('./route/login_router')
 
 require('dotenv').config({
     path: path.join(__dirname, '../env/variables.env')
@@ -78,7 +79,8 @@ if (restrictAccess) {
 
 app.disable('x-powered-by')
 
-app.use('/', loginRouter);
+app.use('/', loginRouter)
+app.use('/api/v1', apiRouter)
 
 const main = async () => {
     if (useHttps) {
