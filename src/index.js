@@ -9,13 +9,19 @@ const http = require('http')
 //Middleware
 const access = require('./middleware/access')
 const compression = require('compression')
+const cookieParser = require('./middleware/cookie_parser')
 const cors = require('cors')
 const helmet = require('helmet')
 const rateLimiting = require('./middleware/rate_limiting')
 
+//Routing
+const loginRouter = require('./route/login_route')
+
 require('dotenv').config({
     path: path.join(__dirname, '../env/variables.env')
 })
+
+const databaseClient = require('./database/database_client')
 
 const restrictAccess = process.env.ACCESS_RESTRICTION === 'true'
 const useHttps = process.env.HTTPS === 'true'
@@ -29,8 +35,10 @@ const app = express();
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
+app.use(cookieParser)
 app.use(compression())
 app.use(cors())
+app.use(express.json())
 app.use(helmet())
 app.use(helmet.contentSecurityPolicy({
     directives: {
@@ -69,7 +77,9 @@ if (restrictAccess) {
 
 app.disable('x-powered-by')
 
-async function main() {
+app.use('/', loginRouter);
+
+const main = async () => {
     if (useHttps) {
         https.createServer({
             key: fs.readFileSync(path.join(__dirname, '../encryption/cert_key.key')),
@@ -81,5 +91,9 @@ async function main() {
 }
 
 main().then(() => {
+    console.log('Connecting to database...')
+    databaseClient.connect()
+    console.log('Connected to database!')
+
     console.log('Started ' + (http ? 'HTTP' : 'HTTPS') + ' server on port ' + port + '!')
 })
