@@ -1,4 +1,7 @@
 const { MongoClient } = require('mongodb')
+const { Cache } = require('js-cache');
+
+const cache = new Cache();
 
 let client
 let db
@@ -20,6 +23,12 @@ const findUserByCookie = async (cookie) => {
 const findUserByEmail = async (email) => {
     return await users.findOne({
         email: email
+    })
+}
+
+const saveUser = async (filter, updateDocument) => {
+    await users.update(filter, {}, {
+        upsert: true
     })
 }
 

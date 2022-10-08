@@ -23,6 +23,10 @@ module.exports = express.Router().get('/login', async (req, res) => {
         return
     }
 
-    const salt = data.salt
-    console.log(await bcrypt.hash(password, salt))
+    const salt = user['salt']
+    const hash = await bcrypt.hash(password, salt)
+
+    if (hash === user['hash']) {
+        
+    }
 })
