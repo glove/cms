@@ -27,18 +27,18 @@ const findUserByEmail = async (email) => {
 }
 
 const saveUser = async (filter, updateDocument) => {
-    await users.update(filter, {}, {
+    await users.update(filter, updateDocument, {
         upsert: true
     })
 }
 
 module.exports = {
     client,
-    db,
     users,
 
     connect,
 
     findUserByCookie,
-    findUserByEmail
+    findUserByEmail,
+    saveUser
 }
