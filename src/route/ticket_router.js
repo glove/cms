@@ -23,6 +23,8 @@ module.exports = express.Router().get('/ticket', async (req, res) => {
 
     if (ticket != null) {
         res.json(ticket)
+    } else {
+        res.status(404)
     }
 }).post('/ticket', async (req, res) => {
     const ticket = await checkTicketValid(req, res)
@@ -48,5 +50,7 @@ module.exports = express.Router().get('/ticket', async (req, res) => {
         })
 
         res.status(200).send("Successfully sent message")
+    } else {
+        res.status(404)
     }
 })
