@@ -19,9 +19,13 @@ const connect = async () => {
 }
 
 const findUserByCookie = async (cookie) => {
-    return await users.findOne({
-        cookie: cookie
-    })
+    let user
+    if ((user = cache.get(cookie)) === undefined) {
+        user = await users.findOne({
+            cookie: cookie
+        })
+        cache.set(cookie, user)
+    }
 }
 
 const findUserByEmail = async (email) => {
@@ -34,6 +38,11 @@ const saveUser = async (filter, updateDocument) => {
     await users.updateOne(filter, updateDocument, {
         upsert: true
     })
+
+    if (filter['cookie']) {
+        const cookie = filter['cookie']
+        cache.del(cookie)
+    }
 }
 
 const createUser = async (email, password, role) => {
