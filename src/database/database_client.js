@@ -1,17 +1,21 @@
 const { MongoClient } = require('mongodb')
 const { Cache } = require('js-cache');
 
+const bcrypt = require('bcrypt')
+
 const cache = new Cache();
 
 let client
 let db
 let users
 
-const connect = () => {
+const connect = async () => {
     client = new MongoClient(process.env.MONGO_URI)
 
-    db = client.db(process.env.DB)
-    users = db.collection(process.env.COLLECTION)
+    await client.connect().then(() => {
+        db = client.db(process.env.DB)
+        users = db.collection(process.env.COLLECTION)
+    })
 }
 
 const findUserByCookie = async (cookie) => {
@@ -27,8 +31,18 @@ const findUserByEmail = async (email) => {
 }
 
 const saveUser = async (filter, updateDocument) => {
-    await users.update(filter, updateDocument, {
+    await users.updateOne(filter, updateDocument, {
         upsert: true
+    })
+}
+
+const createUser = async (email, password) => {
+    const salt = await bcrypt.genSalt(10)
+
+    await users.insertOne({
+        email: email,
+        hash: await bcrypt.hash(password, salt),
+        salt: salt
     })
 }
 
@@ -40,5 +54,6 @@ module.exports = {
 
     findUserByCookie,
     findUserByEmail,
-    saveUser
+    saveUser,
+    createUser
 }

@@ -65,6 +65,7 @@ app.use(express.static(path.join(__dirname, 'static')))
 
 if (useRateLimiting) {
     app.use('/api', rateLimiting)
+    app.use('/login', rateLimiting)
 }
 
 if (useViewCache) {
@@ -92,8 +93,10 @@ const main = async () => {
 
 main().then(() => {
     console.log('Connecting to database...')
-    databaseClient.connect()
-    console.log('Connected to database!')
+
+    databaseClient.connect().then(() => {
+        console.log('Connected to database!')
+    })
 
     console.log('Started ' + (http ? 'HTTP' : 'HTTPS') + ' server on port ' + port + '!')
 })
