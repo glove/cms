@@ -18,6 +18,7 @@ const rateLimiting = require('./middleware/rate_limiting')
 //Routing
 const apiRouter = require('./route/api_router')
 const loginRouter = require('./route/login_router')
+const ticketRouter = require('./route/ticket_router')
 
 require('dotenv').config({
     path: path.join(__dirname, '../env/variables.env')
@@ -84,6 +85,7 @@ app.disable('x-powered-by')
 
 app.use('/', loginRouter)
 app.use('/api/v1/', apiRouter)
+app.use('/api/v1', ticketRouter)
 
 const main = async () => {
     if (useHttps) {

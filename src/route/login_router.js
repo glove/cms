@@ -1,6 +1,6 @@
 const database = require('../database/database_client')
 
-const generateCookie = require('../cookie/cookie_generator')
+const generateCookie = require('../generator/generator')
 const express = require('express')
 const bcrypt = require('bcrypt')
 
@@ -28,7 +28,7 @@ module.exports = express.Router().get('/login', async (req, res) => {
     const hash = await bcrypt.hash(password, salt)
 
     if (hash === user['hash']) {
-        const cookie = generateCookie()
+        const cookie = generateCookie(256)
         user['cookie'] = cookie
 
         await database.saveUser({

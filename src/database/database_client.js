@@ -45,6 +45,12 @@ const findTicketsByUsername = async (username) => {
     }).toArray()
 }
 
+const findTicketById = async (id) => {
+    return await tickets.findOne({
+        id: id
+    })
+}
+
 const saveUser = async (filter, updateDocument) => {
     await users.updateOne(filter, updateDocument, {
         upsert: true
@@ -77,6 +83,7 @@ module.exports = {
     findUserByCookie,
     findUserByEmail,
     findTicketsByUsername,
+    findTicketById,
 
     saveUser,
     createUser
