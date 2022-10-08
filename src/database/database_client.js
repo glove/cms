@@ -10,6 +10,7 @@ let db
 
 let users
 let tickets
+let customers
 
 const connect = async () => {
     client = new MongoClient(process.env.MONGO_URI)
@@ -19,6 +20,7 @@ const connect = async () => {
 
         users = db.collection(process.env.COLLECTION)
         tickets = db.collection(process.env.TICKET_COLLECTION)
+        customers = db.collection(process.env.CUSTOMERS_COLLECTION)
     })
 }
 
@@ -80,6 +82,10 @@ const createUser = async (username, email, password, role) => {
     })
 }
 
+const queryCustomers = async (query) => {
+    return customers.find(query).toArray()
+}
+
 module.exports = {
     client,
     users,
@@ -91,6 +97,7 @@ module.exports = {
     findTicketsByUsername,
     findTicketById,
     updateTicket,
+    queryCustomers,
 
     saveUser,
     createUser

@@ -40,4 +40,19 @@ module.exports = express.Router().post('/create', async (req, res) => {
     }
 
     res.json(active_tickets)
+}).post('/customers', async (req, res) => {
+    const data = req.body
+    let query
+
+    if (data['address']) {
+        query = {address: data['address']}
+    } else if (data['email']) {
+        query = {email: data['email']}
+    } else if (data['phone']) {
+        query = {phone: data['phone']}
+    } else if (data['name']) {
+        query = {name: data['name']}
+    }
+
+    res.json(await database.queryCustomers(query))
 })

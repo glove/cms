@@ -85,7 +85,7 @@ app.disable('x-powered-by')
 
 app.use('/', loginRouter)
 app.use('/api/v1/', apiRouter)
-app.use('/api/v1', ticketRouter)
+app.use('/api/v1/', ticketRouter)
 
 const main = async () => {
     if (useHttps) {
