@@ -14,6 +14,13 @@ module.exports = async (req, res, next) => {
         } else if (user['role'] === 'csr') {
             req.csr = true
         }
+
+        req.username = user['username']
+    }
+
+    if (req.path.startsWith('/api') && !req.csr) {
+        res.status(403).send('No permission!')
+        return
     }
 
     next();

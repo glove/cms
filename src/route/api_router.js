@@ -4,8 +4,8 @@ const express = require('express')
 module.exports = express.Router().post('/create', async (req, res) => {
     const data = req.body;
 
-    if (!data.email || !data.password || !data.role) {
-        res.status(400).send('Missing fields!')
+    if (!data.email || !data.password || !data.role || !data.username) {
+        res.status(500).send('Missing fields!')
         return
     }
 
@@ -14,6 +14,7 @@ module.exports = express.Router().post('/create', async (req, res) => {
         return
     }
 
+    const username = data.username
     const email = data.email
     const password = data.password
     const role = data.role
@@ -23,7 +24,20 @@ module.exports = express.Router().post('/create', async (req, res) => {
         return
     }
 
-    await database.createUser(email, password, role)
+    await database.createUser(username, email, password, role)
 
     res.status(200).send('Successfully created user!')
+}).get('/tickets', async (req, res) => {
+    const active_tickets = []
+    const tickets = await database.findTicketsByUsername(req.username)
+
+    for (let ticket of tickets) {
+        active_tickets.push({
+            id: ticket['id'],
+            assigned_csr: ticket['csr'],
+            opened_at: ticket['date']
+        })
+    }
+
+    res.json(active_tickets)
 })

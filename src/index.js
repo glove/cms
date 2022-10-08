@@ -11,6 +11,7 @@ const access = require('./middleware/access')
 const compression = require('compression')
 const cookieParser = require('./middleware/cookie_parser')
 const cors = require('cors')
+const devAccess = require('./middleware/dev_access')
 const helmet = require('helmet')
 const rateLimiting = require('./middleware/rate_limiting')
 
@@ -75,6 +76,8 @@ if (useViewCache) {
 
 if (restrictAccess) {
     app.use(access);
+} else {
+    app.use(devAccess)
 }
 
 app.disable('x-powered-by')
