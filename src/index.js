@@ -33,7 +33,7 @@ const useViewCache = process.env.VIEW_CACHE === 'true'
 
 const port = process.env.PORT
 
-const app = express();
+const app = express()
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))

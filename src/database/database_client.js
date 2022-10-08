@@ -1,9 +1,9 @@
 const { MongoClient } = require('mongodb')
-const { Cache } = require('js-cache');
+const { Cache } = require('js-cache')
 
 const bcrypt = require('bcrypt')
 
-const cache = new Cache();
+const cache = new Cache()
 
 let client
 let db
@@ -62,6 +62,12 @@ const saveUser = async (filter, updateDocument) => {
     }
 }
 
+const updateTicket = async (filter, updateDocument) => {
+    await tickets.updateOne(filter, updateDocument, {
+        upsert: true
+    })
+}
+
 const createUser = async (username, email, password, role) => {
     const salt = await bcrypt.genSalt(10)
 
@@ -84,6 +90,7 @@ module.exports = {
     findUserByEmail,
     findTicketsByUsername,
     findTicketById,
+    updateTicket,
 
     saveUser,
     createUser

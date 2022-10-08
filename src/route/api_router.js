@@ -2,7 +2,7 @@ const database = require('../database/database_client')
 const express = require('express')
 
 module.exports = express.Router().post('/create', async (req, res) => {
-    const data = req.body;
+    const data = req.body
 
     if (!data.email || !data.password || !data.role || !data.username) {
         res.status(500).send('Missing fields!')

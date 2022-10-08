@@ -1,10 +1,10 @@
 const database = require('../database/database_client')
 const express = require('express')
 
-module.exports = express.Router().get('/ticket', async (req, res) => {
+const checkTicketValid = async (req, res) => {
     if (!req.query.id) {
         res.status(400).send('No ticket ID supplied!')
-        return
+        return null
     }
 
     const id = req.query.id
@@ -12,8 +12,41 @@ module.exports = express.Router().get('/ticket', async (req, res) => {
 
     if (ticket == null) {
         res.status(500).send('No ticket found with that ID!')
-        return
+        return null
     }
 
-    res.json(ticket)
+    return ticket
+}
+
+module.exports = express.Router().get('/ticket', async (req, res) => {
+    const ticket = checkTicketValid(req, res)
+
+    if (ticket != null) {
+        res.json(ticket)
+    }
+}).post('/ticket', async (req, res) => {
+    const ticket = await checkTicketValid(req, res)
+
+    if (ticket != null) {
+        const data = req.body
+
+        if (!data.message) {
+            res.status(400).send("No message supplied!")
+            return
+        }
+
+        await database.updateTicket({
+            id: ticket['id']
+        }, {
+            $push: {
+                messages: {
+                    sent_at: Date.now(),
+                    author: req.username,
+                    message: data['message']
+                }
+            }
+        })
+
+        res.status(200).send("Successfully sent message")
+    }
 })

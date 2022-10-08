@@ -1,0 +1,12 @@
+[
+  {
+    "sent_at": 1665258115,
+    "author": "Customer A",
+    "message": "Hello! This is a test ticket."
+  },
+  {
+    "sent_at": 1665258140,
+    "author": "admin",
+    "message": "This is a test response."
+  }
+]
