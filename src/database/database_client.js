@@ -36,13 +36,14 @@ const saveUser = async (filter, updateDocument) => {
     })
 }
 
-const createUser = async (email, password) => {
+const createUser = async (email, password, role) => {
     const salt = await bcrypt.genSalt(10)
 
     await users.insertOne({
         email: email,
         hash: await bcrypt.hash(password, salt),
-        salt: salt
+        salt: salt,
+        role: role
     })
 }
 

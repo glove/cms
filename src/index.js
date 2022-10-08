@@ -80,7 +80,7 @@ if (restrictAccess) {
 app.disable('x-powered-by')
 
 app.use('/', loginRouter)
-app.use('/api/v1', apiRouter)
+app.use('/api/v1/', apiRouter)
 
 const main = async () => {
     if (useHttps) {
