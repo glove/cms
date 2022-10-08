@@ -26,6 +26,7 @@ const findUserByCookie = async (cookie) => {
         })
         cache.set(cookie, user)
     }
+    return user
 }
 
 const findUserByEmail = async (email) => {
