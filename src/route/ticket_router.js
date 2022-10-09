@@ -11,7 +11,7 @@ const checkTicketValid = async (req, res) => {
     const ticket = await database.findTicketById(id)
 
     if (ticket == null) {
-        res.status(500).send('No ticket found with that ID!')
+        res.status(404).send('No ticket found with that ID!')
         return null
     }
 

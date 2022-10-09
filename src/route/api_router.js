@@ -32,6 +32,10 @@ module.exports = express.Router().post('/create', async (req, res) => {
     const tickets = await database.findTicketsByUsername(req.username)
 
     for (let ticket of tickets) {
+        if (ticket['status'] !== 'open') {
+            continue
+        }
+
         active_tickets.push({
             id: ticket['id'],
             assigned_csr: ticket['csr'],
