@@ -1,5 +1,5 @@
 const express = require('express')
 
 module.exports = express.Router().get('/dashboard', async (req, res) => {
-    res.render('dashboard')
+    res.render('pages/dashboard')
 })

@@ -88,6 +88,7 @@ app.use('/', loginRouter)
 app.use('/', dashboardRouter)
 app.use('/api/v1/', apiRouter)
 app.use('/api/v1/', ticketRouter)
+
 app.use('*', async (req, res) => {
     if (req.username !== undefined) {
         res.redirect('/dashboard')

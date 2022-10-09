@@ -5,7 +5,7 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 
 module.exports = express.Router().get('/login', async (req, res) => {
-    res.render('login')
+    res.render('pages/login')
 }).post('/login', async (req, res) => {
     const data = req.body
 
