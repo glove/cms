@@ -17,6 +17,7 @@ const rateLimiting = require('./middleware/rate_limiting')
 
 //Routing
 const apiRouter = require('./route/api_router')
+const dashboardRouter = require('./route/dashboard_router')
 const loginRouter = require('./route/login_router')
 const ticketRouter = require('./route/ticket_router')
 
@@ -84,6 +85,7 @@ if (restrictAccess) {
 app.disable('x-powered-by')
 
 app.use('/', loginRouter)
+app.use('/', dashboardRouter)
 app.use('/api/v1/', apiRouter)
 app.use('/api/v1/', ticketRouter)
 
