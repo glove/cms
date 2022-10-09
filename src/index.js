@@ -88,7 +88,13 @@ app.use('/', loginRouter)
 app.use('/', dashboardRouter)
 app.use('/api/v1/', apiRouter)
 app.use('/api/v1/', ticketRouter)
-
+app.use('*', async (req, res) => {
+    if (req.username !== undefined) {
+        res.redirect('/dashboard')
+    } else {
+        res.redirect('/login')
+    }
+})
 const main = async () => {
     if (useHttps) {
         https.createServer({
