@@ -24,6 +24,11 @@ module.exports = express.Router().post('/create', async (req, res) => {
         return
     }
 
+    if (await database.findUserByUsername(username) !== null) {
+        res.status(400).send('A user with that username already exists!')
+        return
+    }
+
     await database.createUser(username, email, password, role)
 
     res.status(200).send('Successfully created user!')

@@ -41,6 +41,12 @@ const findUserByEmail = async (email) => {
     })
 }
 
+const findUserByUsername = async (username) => {
+    return await users.findOne({
+        username: username
+    })
+}
+
 const findTicketsByUsername = async (username) => {
     return await tickets.find({
         csr: username
@@ -94,6 +100,7 @@ module.exports = {
 
     findUserByCookie,
     findUserByEmail,
+    findUserByUsername,
     findTicketsByUsername,
     findTicketById,
     updateTicket,
