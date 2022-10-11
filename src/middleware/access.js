@@ -1,4 +1,6 @@
 const database = require('../database/database_client')
+const protectedEndpoints = ['/tickets', '/profile', '/users', '/api']
+const adminEndpoints = ['/admin']
 
 module.exports = async (req, res, next) => {
     req.admin = false
@@ -19,9 +21,18 @@ module.exports = async (req, res, next) => {
         req.username = user['username']
     }
 
-    if (req.path.startsWith('/api') && !req.csr) {
-        res.status(403).send('No permission!')
-        return
+    for(let endpoint of protectedEndpoints) {
+        if (req.path.startsWith(endpoint) && !req.csr) {
+            res.status(403).send('No permission!')
+            return
+        }
+    }
+
+    for(let endpoint of adminEndpoints) {
+        if (req.path.startsWith(endpoint) && !req.admin) {
+            res.status(403).send('No permission!')
+            return
+        }
     }
 
     next()

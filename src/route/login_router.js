@@ -4,9 +4,7 @@ const generateCookie = require('../generator/generator')
 const express = require('express')
 const bcrypt = require('bcrypt')
 
-module.exports = express.Router().get('/login', async (req, res) => {
-    res.render('pages/login')
-}).post('/login', async (req, res) => {
+module.exports = express.Router().post('/login', async (req, res) => {
     const data = req.body
 
     if (!data.email || !data.password) {
