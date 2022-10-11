@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
 body {
     margin: 0;
     background: white;
@@ -5,11 +7,10 @@ body {
 
 .container {
     margin-left: 200px;
-    background: white;
 }
 
 .header {
-    background: rgba(240, 240, 240, .75);
+    background: white;
 }
 
 .container .header {
@@ -20,4 +21,38 @@ body {
 
 .container .header .employee-info {
     margin-left: 90%;
+}
+
+.page-contents li {
+    display: inline-block;
+
+    border-radius: 10px;
+    margin: 10px;
+
+    width: 200px;
+    height: 60px;
+
+    background: rgba(175, 175, 175, .5);
+
+    border-bottom-style: solid;
+    border-bottom-color: #2A4494;
+}
+
+.page-contents li div {
+    text-align: center;
+    text-transform: uppercase;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    color: rgba(175, 175, 175, .7);
+}
+
+.page-contents li {
+    text-align: center;
+
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+
+    text-transform: capitalize;
 }

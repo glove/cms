@@ -95,6 +95,8 @@ const queryCustomers = async (query) => {
 module.exports = {
     client,
     users,
+    tickets,
+    customers,
 
     connect,
 

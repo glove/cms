@@ -15,6 +15,7 @@ module.exports = async (req, res, next) => {
             req.csr = true
         }
 
+        req.role = user['role']
         req.username = user['username']
     }
 
