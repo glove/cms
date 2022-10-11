@@ -65,7 +65,7 @@ app.use(helmet.contentSecurityPolicy({
     }
 }))
 
-app.use(express.static(path.join(__dirname, 'static')))
+app.use('/static', express.static('../static'))
 
 if (useRateLimiting) {
     app.use('/api', rateLimiting)
