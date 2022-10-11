@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    margin-top: 20%;
+    margin-top: 15%;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -19,18 +19,23 @@ body {
     display: block;
     background: white;
 
-    height: 275px;
+    height: 300px;
     width: 400px;
 
     border-radius: 10px;
     border-bottom-color: #2A4494;
 }
 
-.center h1 {
+.center .login-text {
     text-align: center;
     padding: 0 0 20px;
 
     border-bottom: 1px solid silver;
+}
+
+.center p {
+    color: red;
+    visibility: hidden;
 }
 
 .center input {

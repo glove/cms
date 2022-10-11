@@ -42,5 +42,4 @@ module.exports = express.Router().get('/login', async (req, res) => {
     }
 
     res.status(200)
-        .send('Successfully logged in!')
 })
