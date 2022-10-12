@@ -9,24 +9,14 @@ body {
     margin-left: 200px;
 }
 
-.header {
-    background: rgb(250,253,246);
-}
-
-.container .header {
-    padding: 20px;
-    color: rgb(10, 16, 13);
-    border-bottom: 1px solid;
-}
-
-.container .header .employee-info {
+.container .employee-info {
     margin-left: 90%;
 }
 
 .page-contents li {
     display: inline-block;
 
-    margin: 10px 0px 10px 10px;
+    margin: 10px 0 10px 10px;
 
     text-align: left;
 
