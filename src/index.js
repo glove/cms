@@ -19,6 +19,7 @@ const rateLimiting = require('./middleware/rate_limiting')
 const apiRouter = require('./route/api_router')
 const dashboardRouter = require('./route/dashboard_router')
 const loginRouter = require('./route/login_router')
+const pageRouter = require('./route/page_router')
 const ticketRouter = require('./route/ticket_router')
 
 require('dotenv').config({
@@ -77,15 +78,16 @@ if (useViewCache) {
 }
 
 if (restrictAccess) {
-    app.use(access);
+    app.use(access)
 } else {
     app.use(devAccess)
 }
 
 app.disable('x-powered-by')
 
-app.use('/', loginRouter)
 app.use('/', dashboardRouter)
+app.use('/', loginRouter)
+app.use('/', pageRouter)
 app.use('/api/v1/', apiRouter)
 app.use('/api/v1/', ticketRouter)
 
