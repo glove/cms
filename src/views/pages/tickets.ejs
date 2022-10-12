@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href= "/static/css/tickets.css" rel="stylesheet" type="text/css" />
+    <title>CMS | Your Tickets</title>
+</head>
+<body>
+<%- include('../components/sidebar'); %>
+<div id="container">
+    <%- include('../components/header', {title: 'Active Tickets'}) %>
+
+    <div id="page-contents">
+        <table>
+            <tr>
+                <th>Ticket ID</th>
+                <th>Opened At</th>
+            </tr>
+            <% tickets.forEach(function(ticket) { %>
+            <td><a href="/ticket?id=<%=ticket.id%>"><%= ticket.id %></a></td>
+            <td><%= new Date(ticket.date * 1000).toDateString() %>
+            <% }); %>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

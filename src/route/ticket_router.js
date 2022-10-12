@@ -19,7 +19,7 @@ const checkTicketValid = async (req, res) => {
 }
 
 module.exports = express.Router().get('/ticket', async (req, res) => {
-    const ticket = checkTicketValid(req, res)
+    const ticket = await checkTicketValid(req, res)
 
     if (ticket != null) {
         res.json(ticket)
