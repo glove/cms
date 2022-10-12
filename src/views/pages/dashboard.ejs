@@ -19,15 +19,26 @@
             <li>
                 <div id="title">Username</div>
                 <i class="fa-solid fa-user"></i>
-                <%= name %>
+                <span id="name"><%= name %></span>
             </li>
             <li>
                 <div id="title">Role</div>
                 <i class="fa-solid fa-clipboard-user"></i>
-                <%= role %>
+                <span id="role"><%= role %></span>
+            </li>
+            <li>
+                <div id="title">Total Users</div>
+                <i class="fa-solid fa-users"></i>
+                <span id="total-users">0</span>
+            </li>
+            <li>
+                <div id="title">Active Tickets</div>
+                <i class="fa-solid fa-ticket"></i>
+                <span id="active-tickets">0</span>
             </li>
         </ul>
     </div>
+    <script src= "/static/scripts/dashboard.js"></script>
 </div>
 </body>
 </html>

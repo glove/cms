@@ -92,6 +92,15 @@ const queryCustomers = async (query) => {
     return customers.find(query).toArray()
 }
 
+const getStatistics = async () => {
+    return {
+        "total_users": await users.count(),
+        "active_tickets": await tickets.find({
+            "status": "open"
+        }).count()
+    }
+}
+
 module.exports = {
     client,
     users,
@@ -107,6 +116,7 @@ module.exports = {
     findTicketById,
     updateTicket,
     queryCustomers,
+    getStatistics,
 
     saveUser,
     createUser
