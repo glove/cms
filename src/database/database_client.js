@@ -92,12 +92,22 @@ const queryCustomers = async (query) => {
     return customers.find(query).toArray()
 }
 
-const getStatistics = async () => {
+const getStatistics = async (username) => {
     return {
         "total_users": await users.count(),
-        "active_tickets": await tickets.find({
+        "active_tickets": await tickets.countDocuments({
             "status": "open"
-        }).count()
+        }),
+        "assigned_tickets": await tickets.countDocuments({
+            "csr": username
+        }),
+        "total_customers": await customers.count(),
+        "total_csrs": await users.countDocuments({
+            "role": "csr"
+        }),
+        "total_admins": await users.countDocuments({
+            "role": "admin"
+        })
     }
 }
 

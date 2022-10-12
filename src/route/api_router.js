@@ -65,5 +65,5 @@ module.exports = express.Router().post('/create', async (req, res) => {
 
     res.json(await database.queryCustomers(query))
 }).get('/stats', async (req, res) => {
-    res.json(await database.getStatistics())
+    res.json(await database.getStatistics(req.username))
 })
