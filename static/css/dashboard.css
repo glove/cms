@@ -2,7 +2,7 @@
 
 body {
     margin: 0;
-    background: white;
+    background: rgb(250,253,246);
 }
 
 .container {
@@ -10,12 +10,12 @@ body {
 }
 
 .header {
-    background: white;
+    background: rgb(250,253,246);
 }
 
 .container .header {
     padding: 20px;
-    color: black;
+    color: rgb(10, 16, 13);
     border-bottom: 1px solid;
 }
 
@@ -26,32 +26,35 @@ body {
 .page-contents li {
     display: inline-block;
 
-    border-radius: 10px;
-    margin: 10px;
+    margin: 10px 0px 10px 10px;
+
+    text-align: left;
 
     width: 200px;
     height: 60px;
-
-    background: rgba(175, 175, 175, .5);
+    background: rgba(218, 210, 188, .33);
 
     border-bottom-style: solid;
     border-bottom-color: #2A4494;
 }
 
 .page-contents li div {
-    text-align: center;
+    text-align: left;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-transform: uppercase;
 
     font-size: 10px;
     font-weight: bold;
 
-    color: rgba(175, 175, 175, .7);
+    color: rgba(10, 16, 13, .7);
 }
 
 .page-contents li {
     text-align: center;
 
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
 
     text-transform: capitalize;
