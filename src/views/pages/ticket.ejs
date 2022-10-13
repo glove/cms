@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href= "/static/css/profile.css" rel="stylesheet" type="text/css" />
+    <link href= "/static/css/ticket.css" rel="stylesheet" type="text/css" />
     <title>CMS | Ticket <%= ticket.id %></title>
 </head>
 <body>
 <%- include('../components/sidebar'); %>
-<div id="container">
-    <%- include('../components/header', {title: 'Ticket ' + ticket.id}) %>
-</div>
 <div id="page-contents">
+    <div id="container">
+        <%- include('../components/header', {title: 'Ticket ' + ticket.id}) %>
 
+    </div>
 </div>
 </body>
 </html>

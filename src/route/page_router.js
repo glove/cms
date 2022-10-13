@@ -25,9 +25,7 @@ module.exports = express.Router().get('/login', async (req, res) => {
         res.status(403).send('You don\'t have permission to view this ticket!')
         return
     }
-
-    console.log(ticket)
-
+    
     res.render('pages/ticket', {
         ticket: ticket
     })
