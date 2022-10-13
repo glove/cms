@@ -49,7 +49,8 @@ const findUserByUsername = async (username) => {
 
 const findTicketsByUsername = async (username) => {
     return await tickets.find({
-        csr: username
+        csr: username,
+        status: "open"
     }).toArray()
 }
 
