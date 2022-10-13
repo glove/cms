@@ -2,10 +2,6 @@ body {
     margin: 0;
 }
 
-.page-contents {
-    margin-left: 200px;
-}
-
-table {
+#page-contents {
     margin-left: 200px;
 }

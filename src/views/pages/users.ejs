@@ -6,10 +6,10 @@
     <title>CMS | Users</title>
 </head>
 <body>
+<%- include('../components/sidebar'); %>
 <div id="container">
-    <%- include('../components/sidebar'); %>
+    <%- include('../components/header', {title: 'User Management'}) %>
     <div id="page-contents">
-        <%- include('../components/header', {title: 'User Management'}) %>
         <label for="query-type" id="query-type-label"></label>
         <select name="query-type" id="query-type">
             <option value="name">Name</option>
@@ -22,6 +22,9 @@
         </label>
         <button id="submit" name="submit">Submit</button>
     </div>
+
+    <ul id="elements"></ul>
+    <script src="/static/scripts/users.js"></script>
 </div>
 </body>
 </html>

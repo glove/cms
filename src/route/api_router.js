@@ -53,14 +53,24 @@ module.exports = express.Router().post('/create', async (req, res) => {
     const data = req.body
     let query
 
-    if (data['address']) {
-        query = {address: data['address']}
-    } else if (data['email']) {
-        query = {email: data['email']}
-    } else if (data['phone']) {
-        query = {phone: data['phone']}
-    } else if (data['name']) {
-        query = {name: data['name']}
+    switch (data['type']) {
+        case 'address':
+            query = {address: data['query']}
+            break
+        case 'email':
+            query = {email: data['query']}
+            break
+        case 'phone':
+            query = {phone: data['query']}
+            break
+        case 'name':
+            query = {name: data['query']}
+            break
+    }
+
+    if (query === undefined) {
+        res.json([])
+        return
     }
 
     res.json(await database.queryCustomers(query))
