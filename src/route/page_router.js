@@ -21,7 +21,7 @@ module.exports = express.Router().get('/login', async (req, res) => {
 
     const ticket = await database.findTicketById(req.query.id);
 
-    if (ticket.csr !== req.username) {
+    if (ticket['csr'] !== req.username && !req.admin) {
         res.status(403).send('You don\'t have permission to view this ticket!')
         return
     }
@@ -29,4 +29,6 @@ module.exports = express.Router().get('/login', async (req, res) => {
     res.render('pages/ticket', {
         ticket: ticket
     })
+}).get('/admin', async (req, res) => {
+    res.render('pages/admin')
 })
