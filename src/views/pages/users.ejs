@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href= "/static/css/users.css" rel="stylesheet" type="text/css" />
+    <title>CMS | Users</title>
+</head>
+<body>
+<div id="container">
+    <%- include('../components/sidebar'); %>
+    <div id="page-contents">
+        <%- include('../components/header', {title: 'User Management'}) %>
+        <label for="query-type" id="query-type-label"></label>
+        <select name="query-type" id="query-type">
+            <option value="name">Name</option>
+            <option value="email">Email Address</option>
+            <option value="phone">Phone Number</option>
+            <option value="address">Address</option>
+        </select>
+        <label>
+            <input type="text" id="query" placeholder="Query">
+        </label>
+        <button id="submit" name="submit">Submit</button>
+    </div>
+</div>
+</body>
+</html>
