@@ -26,6 +26,8 @@ module.exports = express.Router().get('/login', async (req, res) => {
         return
     }
 
+    console.log(ticket)
+
     res.render('pages/ticket', {
         ticket: ticket
     })
