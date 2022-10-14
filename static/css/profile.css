@@ -3,5 +3,29 @@ body {
 }
 
 #page-contents {
-    margin-left: 200px;
+    margin-left: 205px;
+}
+
+#page-contents input {
+    border-radius: 5px;
+    border-color: darkgray;
+
+    color: black;
+
+    width: 200px;
+    height: 30px;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+#page-contents button {
+    border-radius: 5px;
+    border-color: darkgray;
+
+    color: black;
+
+    width: 100px;
+    height: 30px;
+
+    font-family: 'Open Sans', sans-serif;
 }

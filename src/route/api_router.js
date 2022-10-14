@@ -76,4 +76,14 @@ module.exports = express.Router().post('/create', async (req, res) => {
     res.json(await database.queryCustomers(query))
 }).get('/stats', async (req, res) => {
     res.json(await database.getStatistics(req.username))
+}).post('/namechange', async (req, res) => {
+    const data = req.body
+
+    if (!data.username) {
+        res.status(400).send('No username provided!')
+        return
+    }
+
+    await database.updateName(req.username, data.username)
+    res.status(200).send('Successfully updated username!')
 })

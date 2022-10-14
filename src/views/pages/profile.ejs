@@ -11,7 +11,16 @@
     <%- include('../components/header', {title: 'CSR Profile'}) %>
 </div>
 <div id="page-contents">
+    <h3>Change your username</h3>
 
+    <label>
+        <input id="username" type="text" placeholder="Username"/>
+    </label>
+    <button id="submit">Submit</button>
+
+    <div id="response"></div>
+
+    <script src="/static/scripts/profile.js"></script>
 </div>
 </body>
 </html>

@@ -89,6 +89,26 @@ const createUser = async (username, email, password, role) => {
     })
 }
 
+const updateName = async (username, newUsername) => {
+    await users.updateOne({
+        username: username
+    }, {
+        $set: {
+            username: newUsername
+        }
+    }, {
+        upsert: false
+    })
+
+    cache.keys().forEach(key => {
+        const value = cache.get(key)
+
+        if (value['username'] === username) {
+            cache.remove(key)
+        }
+    })
+}
+
 const queryCustomers = async (query) => {
     return customers.find(query).toArray()
 }
@@ -128,6 +148,7 @@ module.exports = {
     updateTicket,
     queryCustomers,
     getStatistics,
+    updateName,
 
     saveUser,
     createUser
