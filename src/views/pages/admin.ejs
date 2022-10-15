@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href= "/static/css/admin.css" rel="stylesheet" type="text/css" />
+    <title>CMS | Admin Panel</title>
+</head>
+<body>
+<%- include('../components/sidebar'); %>
+<%- include('../components/header', {title: 'Admin Panel'}) %>
+<div class="container">
+    <div>
+        <h3>Create New CSR Account</h3>
+        <label>
+            <input id="csr-username" type="text" placeholder="Username">
+        </label>
+        <label>
+            <input id="csr-email" type="text" placeholder="Email Address">
+        </label>
+        <label>
+            <input id="csr-password" type="password" placeholder="Password">
+        </label>
+        <button id="csr-submit">Submit</button>
+        <div id="csr-response"></div>
+    </div>
+
+    <script src="/static/scripts/admin.js"></script>
+</div>
+</body>
+</html>

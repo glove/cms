@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+
+.container {
+    margin-left: 205px;
+}
+
+.container input {
+    display: block;
+
+    margin-bottom: 5px;
+    width: 200px;
+}

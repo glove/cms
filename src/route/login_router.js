@@ -8,7 +8,7 @@ module.exports = express.Router().post('/login', async (req, res) => {
     const data = req.body
 
     if (!data.email || !data.password) {
-        res.status(400)
+        res.status(400).send('Email or password missing!')
         return
     }
 
@@ -39,5 +39,5 @@ module.exports = express.Router().post('/login', async (req, res) => {
         res.cookie('sessionId', cookie)
     }
 
-    res.status(200)
+    res.status(200).send('Successfully signed in!')
 })
