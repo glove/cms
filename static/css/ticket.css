@@ -5,3 +5,25 @@ body {
 .container {
     margin-left: 205px;
 }
+
+.container input {
+    border-radius: 5px;
+    border-color: darkgray;
+
+    color: black;
+
+    width: 400px;
+    height: 80px;
+}
+
+.container button {
+    border-radius: 5px;
+    border-color: darkgray;
+
+    color: black;
+
+    width: 100px;
+    height: 30px;
+
+    font-family: 'Open Sans', sans-serif;
+}

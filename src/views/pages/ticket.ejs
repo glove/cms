@@ -9,7 +9,23 @@
 <%- include('../components/sidebar'); %>
 <%- include('../components/header', {title: 'Ticket ' + ticket.id}) %>
 <div class="container">
+    <li id="ticket-messages"></li>
+    <% ticket.messages.forEach(function(message) { %>
+    <li>
+        <h5>Author: <%= message['author'] %></h5>
+        <h5>Sent At: <%= new Date(message['sent_at']).toDateString() %></h5>
+        <h6> <%= message['message'] %></h6>
+    </li>
+    <% }); %>
 
+    <label>
+        <input id="response" type="text" placeholder="Response">
+    </label>
+    <div>
+        <button id="submit">Send response</button>
+    </div>
+
+    <script src="./static/scripts/ticket.js"></script>
 </div>
 </body>
 </html>

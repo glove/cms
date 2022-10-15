@@ -98,6 +98,7 @@ app.use('*', async (req, res) => {
         res.redirect('/login')
     }
 })
+
 const main = async () => {
     if (useHttps) {
         https.createServer({
