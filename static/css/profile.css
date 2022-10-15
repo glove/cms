@@ -2,11 +2,11 @@ body {
     margin: 0;
 }
 
-#page-contents {
+.container {
     margin-left: 205px;
 }
 
-#page-contents input {
+.container input {
     border-radius: 5px;
     border-color: darkgray;
 
@@ -18,7 +18,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-#page-contents button {
+.container button {
     border-radius: 5px;
     border-color: darkgray;
 

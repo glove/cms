@@ -7,22 +7,19 @@
 </head>
 <body>
 <%- include('../components/sidebar'); %>
-<div id="container">
-    <%- include('../components/header', {title: 'User Management'}) %>
-    <div id="page-contents">
-        <label for="query-type" id="query-type-label"></label>
-        <select name="query-type" id="query-type">
-            <option value="name">Name</option>
-            <option value="email">Email Address</option>
-            <option value="phone">Phone Number</option>
-            <option value="address">Address</option>
-        </select>
-        <label>
-            <input type="text" id="query" placeholder="Query">
-        </label>
-        <button id="submit" name="submit">Submit</button>
-    </div>
-
+<%- include('../components/header', {title: 'User Management'}) %>
+<div class="container">
+    <label for="query-type" id="query-type-label"></label>
+    <select name="query-type" id="query-type">
+        <option value="name">Name</option>
+        <option value="email">Email Address</option>
+        <option value="phone">Phone Number</option>
+        <option value="address">Address</option>
+    </select>
+    <label>
+        <input type="text" id="query" placeholder="Query">
+    </label>
+    <button id="submit" name="submit">Submit</button>
     <ul id="elements"></ul>
     <script src="/static/scripts/users.js"></script>
 </div>

@@ -7,11 +7,9 @@
 </head>
 <body>
 <%- include('../components/sidebar'); %>
-<div id="page-contents">
-    <div id="container">
-        <%- include('../components/header', {title: 'Ticket ' + ticket.id}) %>
+<%- include('../components/header', {title: 'Ticket ' + ticket.id}) %>
+<div class="container">
 
-    </div>
 </div>
 </body>
 </html>

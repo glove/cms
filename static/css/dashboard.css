@@ -5,11 +5,11 @@ body {
     background: rgb(250,253,246);
 }
 
-#page-contents {
+.container {
     margin-left: 200px;
 }
 
-#page-contents li {
+.container li {
     display: inline-block;
 
     margin: 10px 0 10px 10px;
@@ -24,7 +24,7 @@ body {
     border-bottom-color: #2A4494;
 }
 
-#page-contents li div {
+.container li div {
     text-align: left;
     padding-left: 5px;
     padding-top: 5px;
@@ -37,7 +37,7 @@ body {
     color: rgba(10, 16, 13, .7);
 }
 
-#page-contents li {
+.container li {
     text-align: center;
 
     font-size: 18px;

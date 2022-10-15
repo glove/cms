@@ -8,53 +8,50 @@
 </head>
 <body>
 <%- include('../components/sidebar'); %>
+<%- include('../components/header', {title: 'Dashboard'}) %>
 <div class="container">
-    <%- include('../components/header', {title: 'Dashboard'}) %>
-
-    <div id="page-contents">
-        <ul id="components">
-            <li>
-                <div id="title">Username</div>
-                <i class="fa-solid fa-user"></i>
-                <span id="name"><%= name %></span>
-            </li>
-            <li>
-                <div id="title">Role</div>
-                <i class="fa-solid fa-clipboard-user"></i>
-                <span id="role"><%= role %></span>
-            </li>
-            <li>
-                <div id="title">Total Users</div>
-                <i class="fa-solid fa-users"></i>
-                <span id="total-users">0</span>
-            </li>
-            <li>
-                <div id="title">Active Tickets</div>
-                <i class="fa-solid fa-ticket"></i>
-                <span id="active-tickets">0</span>
-            </li>
-            <li>
-                <div id="title">Assigned Tickets</div>
-                <i class="fa-solid fa-ticket-simple"></i>
-                <span id="assigned-tickets">0</span>
-            </li>
-            <li>
-                <div id="title">Total Customers</div>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="total-customers">0</span>
-            </li>
-            <li>
-                <div id="title">Total Representatives</div>
-                <i class="fa-solid fa-clipboard-list"></i>
-                <span id="total-representatives">0</span>
-            </li>
-            <li>
-                <div id="title">Total Administrators</div>
-                <i class="fa-solid fa-lock"></i>
-                <span id="total-administrators">0</span>
-            </li>
-        </ul>
-    </div>
+    <ul id="components">
+        <li>
+            <div id="title">Username</div>
+            <i class="fa-solid fa-user"></i>
+            <span id="name"><%= name %></span>
+        </li>
+        <li>
+            <div id="title">Role</div>
+            <i class="fa-solid fa-clipboard-user"></i>
+            <span id="role"><%= role %></span>
+        </li>
+        <li>
+            <div id="title">Total Users</div>
+            <i class="fa-solid fa-users"></i>
+            <span id="total-users">0</span>
+        </li>
+        <li>
+            <div id="title">Active Tickets</div>
+            <i class="fa-solid fa-ticket"></i>
+            <span id="active-tickets">0</span>
+        </li>
+        <li>
+            <div id="title">Assigned Tickets</div>
+            <i class="fa-solid fa-ticket-simple"></i>
+            <span id="assigned-tickets">0</span>
+        </li>
+        <li>
+            <div id="title">Total Customers</div>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="total-customers">0</span>
+        </li>
+        <li>
+            <div id="title">Total Representatives</div>
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span id="total-representatives">0</span>
+        </li>
+        <li>
+            <div id="title">Total Administrators</div>
+            <i class="fa-solid fa-lock"></i>
+            <span id="total-administrators">0</span>
+        </li>
+    </ul>
     <script src= "/static/scripts/dashboard.js"></script>
 </div>
 </body>
