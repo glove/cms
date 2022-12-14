@@ -1,9 +1,7 @@
 //Express and essential imports
 const express = require('express')
 const path = require('path')
-const fs = require('fs')
 
-const https = require('https')
 const http = require('http')
 
 //Middleware
@@ -29,10 +27,10 @@ require('dotenv').config({
 const databaseClient = require('./database/database_client')
 
 const restrictAccess = process.env.ACCESS_RESTRICTION === 'true'
-const useHttps = process.env.HTTPS === 'true'
 const useRateLimiting = process.env.RATE_LIMITING === 'true'
 const useViewCache = process.env.VIEW_CACHE === 'true'
 
+const host = process.env.HOST;
 const port = process.env.PORT
 
 const app = express()
@@ -51,8 +49,8 @@ app.use(helmet.contentSecurityPolicy({
         scriptSrc:  [ `'self'`, `'unsafe-eval'`,
             `https://www.google.com/recaptcha/`,
             `https://www.gstatic.com/recaptcha/releases/`,
-            `https://kit.fontawesome.com/`,
-            `https://cdn.jsdelivr.net/npm/axios/dist/`],
+            `https://kit.fontawesome.com/`
+        ],
         styleSrc: [ `'self'`, `'unsafe-inline'`,
             `https://kit.fontawesome.com`,
             `https://fonts.googleapis.com` ],
@@ -100,22 +98,15 @@ app.use('*', async (req, res) => {
 })
 
 const main = async () => {
-    if (useHttps) {
-        https.createServer({
-            key: fs.readFileSync(path.join(__dirname, '../encryption/cert_key.key')),
-            cert: fs.readFileSync(path.join(__dirname, '../encryption/cert_pem.pem')),
-        }, app).listen(port)
-    } else {
-        http.createServer(app).listen(port)
-    }
-}
-
-main().then(() => {
     console.log('Connecting to database...')
 
     databaseClient.connect().then(() => {
         console.log('Connected to database!')
     })
 
-    console.log('Started ' + (http ? 'HTTP' : 'HTTPS') + ' server on port ' + port + '!')
+    http.createServer(app).listen(port, host);
+}
+
+main().then(() => {
+    console.log('Started server on port ' + port + '!')
 })
